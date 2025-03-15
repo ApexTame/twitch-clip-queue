@@ -1,6 +1,6 @@
 import streamableApi from '../../../../common/apis/streamableApi';
 import type { Clip } from '../../clipQueueSlice';
-import type { ClipProvider } from '../providers';
+import type { ClipProvider } from '../Providers';
 
 class StreamableProvider implements ClipProvider {
   name = 'streamable';

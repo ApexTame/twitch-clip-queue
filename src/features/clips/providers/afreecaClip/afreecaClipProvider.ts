@@ -1,6 +1,6 @@
 import afreecaApi from '../../../../common/apis/afreecaApi';
 import type { Clip } from '../../clipQueueSlice';
-import type { ClipProvider } from '../providers';
+import type { ClipProvider } from '../Providers';
 
 class AfreecaClipProvider implements ClipProvider {
   name = 'afreeca-clip';

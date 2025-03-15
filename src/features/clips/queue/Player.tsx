@@ -12,7 +12,7 @@ import {
   selectNextId,
 } from '../clipQueueSlice';
 import ReactPlayer from 'react-player/lazy';
-import clipProvider from '../providers/providers';
+import clipProvider from '../providers/Providers';
 
 interface PlayerProps {
   className?: string;
@@ -48,7 +48,7 @@ function Player({ className }: PlayerProps) {
             key={currentClip.id}
             playing
             controls
-            url={autoplayUrl}
+            url={videoSrc}
             width="100%"
             height="100%"
             style={{

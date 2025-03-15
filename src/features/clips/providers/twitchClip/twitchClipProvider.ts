@@ -1,6 +1,6 @@
 import twitchApi from '../../../../common/apis/twitchApi';
 import type { Clip } from '../../clipQueueSlice';
-import type { ClipProvider } from '../providers';
+import type { ClipProvider } from '../Providers';
 
 class TwitchClipProvider implements ClipProvider {
   name = 'twitch-clip';

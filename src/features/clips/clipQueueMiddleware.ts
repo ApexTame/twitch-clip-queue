@@ -21,7 +21,7 @@ import {
   autoplayUrlReceived,
 } from './clipQueueSlice';
 import { applyCustomizations } from './customization/customization';
-import clipProvider from './providers/providers';
+import clipProvider from './providers/Providers';
 
 const logger = createLogger('ClipQueueMiddleware');
 

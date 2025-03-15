@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import Clip from '../Clip';
 import { memoryClipRemoved, selectClipHistoryIdsPage } from '../clipQueueSlice';
-import clipProvider from '../providers/providers';
+import clipProvider from '../providers/Providers';
 
 function MemoryPage() {
   const dispatch = useAppDispatch();

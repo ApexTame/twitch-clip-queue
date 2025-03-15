@@ -1,6 +1,6 @@
 import kickApi from '../../../../common/apis/kickApi';
 import type { Clip } from '../../clipQueueSlice';
-import type { ClipProvider } from '../providers';
+import type { ClipProvider } from '../Providers';
 
 class KickClipProvider implements ClipProvider {
   name = 'kick-clip';
