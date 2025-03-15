@@ -1,4 +1,4 @@
-import kickClipProvider from './kickClipprovider';
+import kickClipProvider from './kickClipProvider';
 
 describe('KickClipProvider', () => {
   it('gets clip info from www.Kick.com url', () => {
