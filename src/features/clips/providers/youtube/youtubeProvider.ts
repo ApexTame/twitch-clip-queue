@@ -1,6 +1,6 @@
 import youtubeApi from '../../../../common/apis/youtubeApi';
 import type { Clip } from '../../clipQueueSlice';
-import type { ClipProvider } from '../Providers';
+import type { ClipProvider } from '../providers';
 
 class YoutubeProvider implements ClipProvider {
   name = 'youtube';

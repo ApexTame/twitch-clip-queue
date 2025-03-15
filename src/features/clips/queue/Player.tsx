@@ -12,7 +12,7 @@ import {
   selectNextId,
 } from '../clipQueueSlice';
 import ReactPlayer from 'react-player/lazy';
-import clipProvider from '../providers/Providers';
+import clipProvider from '../providers/providers';
 
 interface PlayerProps {
   className?: string;
