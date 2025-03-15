@@ -5,8 +5,7 @@ import streamableProvider from './streamable/streamableProvider';
 import twitchClipProvider from './twitchClip/twitchClipProvider';
 import twitchVodProvider from './twitchVod/twitchVodProvider';
 import youtubeProvider from './youtube/youtubeProvider';
-import kickClipProvider from './kickClip/kickClipprovider';
-
+import kickClipProvider from './kickClip/kickClipProvider';
 const logger = createLogger('CombinedClipProvider');
 
 export interface ClipProvider {
