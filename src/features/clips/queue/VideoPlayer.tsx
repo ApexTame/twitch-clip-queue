@@ -31,6 +31,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
       console.error('No video source provided');
     }
 
+    const VolumeSaved = localStorage.getItem('SavedVolumeVideoPlayer');
+    if (VolumeSaved) {
+      playerRef.current.volume(parseFloat(VolumeSaved));
+    }
+
+    playerRef.current.on('volumechange', () => {
+      const currentVolume = playerRef.current.volume();
+      localStorage.setItem('SavedVolumeVideoPlayer', currentVolume.toString());
+    });
+
     return () => {
       if (playerRef.current) {
         playerRef.current.dispose();
