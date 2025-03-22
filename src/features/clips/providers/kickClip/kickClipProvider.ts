@@ -43,6 +43,7 @@ class KickClipProvider implements ClipProvider {
       createdAt: clipInfo.created_at,
       thumbnailUrl: clipInfo.thumbnail_url.replace('%{width}x%{height}', '480x272'),
       submitters: [],
+      Platform: 'Kick',
     };
   }
 
