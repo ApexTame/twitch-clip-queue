@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconBrandTwitch, IconBrandKickFilled, IconBrandYoutubeFilled } from '@tabler/icons-react';
+import { IconBrandTwitch, IconBrandKick, IconBrandYoutube } from '@tabler/icons-react';
 import type { PlatformType } from '../utils';
 
 interface BrandPlatformsProps {
@@ -11,9 +11,9 @@ const Platform: React.FC<BrandPlatformsProps> = ({ platform }) => {
     case 'Twitch':
       return <IconBrandTwitch size={15} />;
     case 'Kick':
-      return <IconBrandKickFilled size={15} />;
+      return <IconBrandKick size={15} />;
     case 'YouTube':
-      return <IconBrandYoutubeFilled size={15} />;
+      return <IconBrandYoutube size={15} />;
     case 'Afreeca':
       return null;
     case 'Streamable':
