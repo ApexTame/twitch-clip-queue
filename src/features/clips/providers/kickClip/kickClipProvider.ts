@@ -54,9 +54,8 @@ class KickClipProvider implements ClipProvider {
   getEmbedUrl(id: string): string | undefined {
     return this.getUrl(id);
   }
-
   async getAutoplayUrl(id: string): Promise<string | undefined> {
-    return this.getUrl(id);
+    return await kickApi.getDirectUrl(id);
   }
 }
 

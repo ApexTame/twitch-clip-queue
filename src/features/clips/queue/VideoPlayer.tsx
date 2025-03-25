@@ -8,9 +8,10 @@ import '@videojs/http-streaming';
 
 interface VideoPlayerProps {
   src: string | undefined;
+  onEnded?: () => void;
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, onEnded }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const playerRef = useRef<any>(null);
   const dispatch = useDispatch();
@@ -43,6 +44,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
       const currentVolume = playerRef.current.volume();
       dispatch(setVolume(currentVolume));
     });
+
+    if (onEnded) {
+      playerRef.current?.on('ended', onEnded);
+    }
 
     return () => {
       if (playerRef.current) {
