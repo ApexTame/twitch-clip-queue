@@ -80,13 +80,24 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, onEnded }) => {
       playerRef.current?.on('ended', onEnded);
     }
 
+    if (playerRef.current) {
+      playerRef.current.volume(volume);
+    }
+    playerRef.current?.on('volumechange', () => {
+      const currentVolume = playerRef.current.volume();
+      dispatch(setVolume(currentVolume));
+    });
+
+    if (onEnded) {
+      playerRef.current?.on('ended', onEnded);
+    }
+
     return () => {
       if (playerRef.current) {
         playerRef.current.dispose();
         playerRef.current = null;
       }
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
 
