@@ -1,4 +1,17 @@
-import { Button, Chip, Chips, Group, Stack, TextInput, Text, NumberInput, Tabs, Select, Code, Textarea } from '@mantine/core';
+import {
+  Button,
+  Chip,
+  Chips,
+  Group,
+  Stack,
+  TextInput,
+  Text,
+  NumberInput,
+  Tabs,
+  Select,
+  Code,
+  Textarea,
+} from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import { useModals } from '@mantine/modals';
 import { History, Settings, Slideshow } from 'tabler-icons-react';
@@ -10,7 +23,13 @@ import {
   selectLayout,
   selectProviders,
 } from '../clips/clipQueueSlice';
-import { selectChannel, selectCommandPrefix, selectIgnoredChatters, settingsChanged } from './settingsSlice';
+import {
+  selectChannel,
+  selectCommandPrefix,
+  selectIgnoredChatters,
+  selectInitialQueueOpen,
+  settingsChanged,
+} from './settingsSlice';
 
 function SettingsModal({ closeModal }: { closeModal: () => void }) {
   const dispatch = useAppDispatch();
@@ -20,10 +39,13 @@ function SettingsModal({ closeModal }: { closeModal: () => void }) {
   const enabledProviders = useAppSelector(selectProviders);
   const layout = useAppSelector(selectLayout);
   const historyIds = useAppSelector(selectHistoryIds);
+  const initialQueueOpen: 'true' | 'false' = `${useAppSelector(selectInitialQueueOpen)}`;
   const ignoredChatters = useAppSelector(selectIgnoredChatters).join('\n');
 
+  console.log(initialQueueOpen);
+
   const form = useForm({
-    initialValues: { channel, commandPrefix, clipLimit, enabledProviders, layout, ignoredChatters },
+    initialValues: { channel, commandPrefix, clipLimit, enabledProviders, layout, ignoredChatters, initialQueueOpen },
   });
 
   return (
@@ -55,6 +77,16 @@ function SettingsModal({ closeModal }: { closeModal: () => void }) {
                   <Code>{form.values.commandPrefix}next</Code>
                 </Text>
               </Stack>
+
+              <Select
+                required
+                label="Initial queue state"
+                data={[
+                  { value: 'true', label: 'Open' },
+                  { value: 'false', label: 'Closed' },
+                ]}
+                {...form.getInputProps('initialQueueOpen')}
+              />
             </Stack>
           </Tabs.Tab>
 
@@ -101,9 +133,9 @@ function SettingsModal({ closeModal }: { closeModal: () => void }) {
                 label="Ignored chatters"
                 description="Chat names of chatters to ignore messages from, one per line. They won't be able to submit clips and use chat commands."
                 minRows={4}
-                autoComplete='off'
-                autoCapitalize='off'
-                autoCorrect='off'
+                autoComplete="off"
+                autoCapitalize="off"
+                autoCorrect="off"
                 spellCheck={false}
                 {...form.getInputProps('ignoredChatters')}
               />

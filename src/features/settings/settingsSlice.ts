@@ -11,14 +11,16 @@ interface SettingsState {
   channel?: string;
   commandPrefix: string;
   volume: number | undefined;
-  ignoredChatters: string[]
+  ignoredChatters: string[];
+  initialQueueOpen: boolean;
 }
 
 const initialState: SettingsState = {
   colorScheme: null,
   commandPrefix: '!queue',
   volume: 1,
-  ignoredChatters: ['streamlabs', 'nightbot', 'streamelements', 'fossabot', 'moobot', 'sery_bot', 'wizebot', 'kofistreambot']
+  ignoredChatters: ['streamlabs', 'nightbot', 'streamelements', 'fossabot', 'moobot', 'sery_bot', 'wizebot', 'kofistreambot'],
+  initialQueueOpen: false
 };
 
 const settingsSlice = createSlice({
@@ -43,6 +45,9 @@ const settingsSlice = createSlice({
       }
       if (payload.ignoredChatters || payload.ignoredChatters === '') {
         state.ignoredChatters = payload.ignoredChatters.split('\n').map(x => x.trim()).filter(c => !!c);
+      }
+      if (payload.initialQueueOpen !== undefined) {
+        state.initialQueueOpen = payload.initialQueueOpen === 'true';
       }
     },
     setVolume: (state, action: PayloadAction<number | undefined>) => {
@@ -73,6 +78,7 @@ const selectSettings = (state: RootState): SettingsState => state.settings;
 export const selectChannel = (state: RootState) => state.settings.channel;
 export const selectCommandPrefix = (state: RootState) => state.settings.commandPrefix;
 export const selectIgnoredChatters = (state: RootState) => state.settings.ignoredChatters;
+export const selectInitialQueueOpen = (state: RootState) => state.settings.initialQueueOpen;
 
 export const selectColorScheme = createSelector(
   [selectSettings, (_, defaultColorScheme: ColorScheme) => defaultColorScheme],
