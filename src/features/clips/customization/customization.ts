@@ -1,11 +1,13 @@
 import { formatISO, isFriday } from 'date-fns';
 import type { AppMiddlewareAPI } from '../../../app/store';
-import { currentClipForceReplaced } from '../clipQueueSlice';
+import { currentClipForceReplaced, isOpenChanged } from '../clipQueueSlice';
 
 export function applyCustomizations(storeApi: AppMiddlewareAPI) {
   const {
-    settings: { channel },
+    settings: { channel, initialQueueOpen },
   } = storeApi.getState();
+
+  storeApi.dispatch(isOpenChanged(initialQueueOpen))
 
   const now = new Date();
 

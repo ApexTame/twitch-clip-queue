@@ -7,7 +7,9 @@ export interface AllSettings {
   commandPrefix?: string;
 
   enabledProviders?: string[];
+  ignoredChatters?: string;
 
   clipLimit?: number | null;
   layout?: string;
+  initialQueueOpen?: 'true' | 'false';
 }

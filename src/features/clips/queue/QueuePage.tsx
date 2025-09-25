@@ -7,16 +7,25 @@ import SpotlightLayout from './layouts/SpotlightLayout';
 function QueuePage() {
   const layout = useAppSelector(selectLayout);
 
+  let Layout = ClassicLayout;
   switch (layout) {
     case 'classic':
-      return <ClassicLayout />;
+      Layout = ClassicLayout;
+      break;
     case 'spotlight':
-      return <SpotlightLayout />;
+      Layout = SpotlightLayout;
+      break;
     case 'fullscreen':
-      return <FullscreenWithPopupLayout />;
-    default:
-      return <ClassicLayout />;
+      Layout = FullscreenWithPopupLayout;
+      break;
   }
+
+  return (
+    <>
+
+      <Layout />
+    </>
+  );
 }
 
 export default QueuePage;
