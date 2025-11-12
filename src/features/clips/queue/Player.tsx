@@ -84,8 +84,11 @@ function Player({ className }: PlayerProps) {
         }
       } catch (err) {
         if (Flag) {
-          setError('Failed to load video');
-          setVideoSrc(undefined);
+          const fallbackUrl = clipProvider.getFallbackM3u8Url(currentClip.id);
+          setVideoSrc(fallbackUrl);
+          setError(null);
+        } else {
+          setError('Failed to load video. Please make an Issue Request on GitHub. Thank you!');
         }
       }
     };
